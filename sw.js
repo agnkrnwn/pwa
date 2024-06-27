@@ -3,11 +3,28 @@ self.addEventListener("install", function (event) {
 });
 
 var filesToCache = [
-  "/",
-  "/offline.html",
-  "/index.html",
-  "/css/custom.css",
-  "/js/generate.js",
+    "/",
+    "/index.html",
+    "/manifest.json",
+    "/offline.html",
+    "/scan.py",
+    "/sw.js",
+    "/css/all.min.css",
+    "/css/bootstrap.min.css",
+    "/css/custom.css",
+    "/images/add.png",
+    "/images/icon/apple-icon-180.png",
+    "/images/icon/image.svg",
+    "/images/icon/manifest-icon-192.maskable.png",
+    "/images/icon/manifest-icon-512.maskable.png",
+    "/js/bootstrap.bundle.min.js",
+    "/js/generate.js",
+    "/js/JsBarcode.all.min.js",
+    "/js/jspdf.umd.min.js",
+    "/js/sweetalert2@11.js",
+    "/webfonts/fa-solid-900.ttf",
+    "/webfonts/fa-solid-900.woff2"
+  
 ];
 
 var preLoad = function () {
