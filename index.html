@@ -1,199 +1,178 @@
 <!DOCTYPE html>
-<html lang="id" >
+<html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Generate label pengiriman pdf">
-    <title>LABEL GENERATOR</title>
-
-    <!-- PWA SHIT -->
-    <meta name="theme-color" content="#000000"/>
+    <meta name="theme-color" content="#121212" />
+    <title>Label Generator Pro</title>
     <link rel="apple-touch-icon" href="/images/icon/apple-icon-180.png">
-    <link rel="manifest" href="/manifest.json">
     <link rel="shortcut icon" href="/images/icon/image.svg">
 
-    <!-- INTERNAL ASSET -->
-
-    <script src="../js/jquery.min.js" defer type="text/javascript"></script>  
-    <script src="../js/barcode2.js?v=4799" defer type="text/javascript"></script>
-    <script src="../js/JsBarcode.all.min.js" defer type="text/javascript"></script>
-    <script src="../js/jspdf.min.js" defer type="text/javascript"></script>
-    <link rel="stylesheet" href="../css/mobile.css" type="text/css" media="screen and (max-device-width: 600px)" defer>
-    <script src="../js/sweetalert2.all.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="../css/sweetalert2.min.css" defer>
-
-    <!-- EXTERNAL ASSET -->
 
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.5/JsBarcode.all.min.js"></script>
-    <link rel="stylesheet" href="/css/dark.css" defer>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
-    
-
-    <script>
-        if('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js')
-          .then(function() {
-                console.log('Service Worker Registered');
-          });
-      }
-    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="custom.css">
+    <link rel="manifest" href="manifest.json">
 
 </head>
-<body>
-    <div class="container-fluid bg-light">
-        <div class="container">
-            <div class="row justify-content-center ">
-                <div class="col">
-                    <header>
-                        <nav>
-                            <button class="first float-start mt-3 me-7 btn btn-light info"><i class="fa fa-info" ></i> info</button>
-                            <div class="form-check form-switch ms-auto mt-3 me-7 float-end">
-                                <label class="form-check-label ms-0" for="lightSwitch">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="25"
-                                    height="25"
-                                    fill="currentColor"
-                                    class="bi bi-brightness-high"
-                                    viewBox="0 0 16 16"
-                                  >
-                                    <path
-                                      d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
-                                    />
-                                  </svg>
-                                </label>
-                                <label for="lightSwitch" id="hide">dark mode</label>
-                                <input class="form-check-input" type="checkbox" id="lightSwitch" />
-                              </div>
-                        </nav>
-                        <!-- Jumbotron -->
-                        <div class="p-5 text-center bg-light">
-                          <h1 class="mb-2">LABEL GENERATOR</h1>
-                          <p class="mb-0">Use chrome for a better experience </p>
-                          
-                        </div>
-                        <!-- Jumbotron -->
-                    </header>
-                    <form >
-                        <div class="row mb-3">
-                            <div class="col">
-                                <select id="order" class="form-select">
-                                    <option value="ORDER">ORDER</option>
-                                    <option value="RETUR">RETUR</option>
-                                    <option value="REFUND">REFUND</option>
-                                    <option value="HADIAH">HADIAH</option>
-                                  </select>
-                            </div>
-                            <div class="col">
-                                <select id="cash" class="form-select" onchange="fillInputField()">
-                                    <option value="METODE">METODE</option>
-                                    <option value="MANUAL">MANUAL</option>
-                                    <option value="CASHLESS">CASHLESS</option>
-                                    <option value="COD">COD</option>
-                                    <option value="DFOD">DFOD</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col">
-                              <input type="text" class="form-control" placeholder="RESI WAJIB" name="resi" id="resi" value="" required>
-                            </div>
-                            <div class="col">
-                                <select id="expedisi" class="form-select">
-                                    <option value="EXPEDISI">EXPEDISI</option>
-                                    <option value="JNE REG">JNE REG</option>
-                                    <option value="JNE OKE">JNE OKE</option>
-                                    <option value="JNE YES">JNE YES</option>
-                                    <option value="JNE JTR">JNE JTR</option>
-                                    <option value="JNT">JNT</option>
-                                    <option value="JNT DFOD">JNT DFOD</option>
-                                    <option value="JNT ECO">JNT ECONOMY</option>
-                                    <option value="JNT JMR">JNT JEMARI</option>
-                                    <option value="LEL EXP">LEL EXPRESS</option>
-                                    <option value="TIKI">TIKI</option>
-                                    <option value="ID EXP">ID EXPRESS</option>
-                                    <option value="ANTER AJA">ANTER AJA</option>
-                                    <option value="NINJA">NINJA EXPRESS</option>
-                                    <option value="WAHANA">WAHANA</option>
-                                    <option value="SICEPAT REG">SICEPAT REG</option>
-                                    <option value="SICEPAT HALU">SICEPAT HALU</option>
-                                    <option value="SHOPEE STD">SHOPEE EXPRESS STD</option>
-                                    <option value="SHOPEE INS">SHOPEE EXPRESS INS</option>
-                                    <option value="GRAB INST">GRAB INSTANT</option>
-                                    <option value="GRAB SAME">GRAB SAMEDAY</option>
-                                    <option value="GOJEK INST">GOJEK INSTANT</option>
-                                    <option value="GOJEK SAME">GOJEK SAMEDAY</option>
-                                    <option value="CARGO">CARGO</option>
-                                    <option class="editable" style="color: red;" value="" >LAINYA</option>
-                                </select>
-                            </div>
-                            <div class="form-group mb-3">
-                                <input class="editOption mt-3 w-90 form-control alert alert-danger" style="display: none" placeholder="Tulis expedisi lain disini jangan kosong"></input>
-                            </div>   
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="">Nomer Pesanan</label>
-                            <input type="text" class="form-control" id="nopes" name="nopes" placeholder="Isi bebas untukmu identifikasi" >
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col">
-                                <label for="">Pengirim</label>
-                            <input type="text" class="form-control" id="pengirim"  placeholder="Nama no telp pengirim" required>
-                            </div>
-                            <div class="col">
-                                <label for="">Penerima</label>
-                            <input type="text" class="form-control" id="penerima"  placeholder="Nama no telp penerima" required>
-                            </div>
-                        </div>
-                        <div class="mb-3 mt-3">
-                            <label for="comment">Alamat:</label>
-                            <textarea class="form-control" rows="5" id="alamat" name="addres" placeholder="isi dengan alamat penerima lengkap rt/, gausah di kasi enter gpp udah format alamat otomatis" required></textarea >
-                        </div>
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Produk 1</span>
-                            <input id="barang" type="text" class="form-control" placeholder="isi nama produk dan jumlahnya">
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Produk 2</span>
-                            <input id="barangdua" type="text" class="form-control" placeholder="isi nama produk dan jumlahnya">
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Produk 3</span>
-                            <input id="barangtiga" type="text" class="form-control" placeholder="isi nama produk dan jumlahnya">
-                        </div>
-
-
-                        <div class="mb-3 text-center">
-                            <button onclick="printPDF()" type="button" id="printpagebutton" name="printpagebutton" class="btn btn-block border-light btn-dark " ><i class="fa fa-print"></i>  PRINT</button>
-                            <button onclick="createPDF()" type="button" id="downloadlabel" name="downloadlabel" class="btn btn-block border-light btn-dark " ><i class="fa fa-download" ></i> DOWNLOAD</button>
-                            <button type="reset" class="btn btn-block border-light btn-dark" value="Reset"><i class="fa">&#xf021;</i>  RESET </button>
-                        </div>
-                        <div class="mb-3 row text-center">
-                            <img style="display: none;" id="barcode" alt="barcode">
-                        </div>                  
-                    </form>
+<body class="dark-theme">
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center min-vh-100">
+            <div class="col-lg-8 col-md-10">
+                <div class="card main-card">
+                    <div class="card-body">
+                        <h1 class="text-center mb-4">Label Generator Pro</h1>
+                        <form>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <select id="order" class="form-select custom-select">
+                                        <option value="PESANAN">Tipe Order</option>
+                                        <option value="ORDER">Order</option>
+                                        <option value="RETUR">Return</option>
+                                        <option value="REFUND">Refund</option>
+                                        <option value="HADIAH">Hadiah</option>
+                                        <option value="BONUS">Bonus</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <select id="cash" class="form-select custom-select" onchange="fillInputField()">
+                                        <option value="METODE">Metode Pembayaran</option>
+                                        <option value="MANUAL">Manual</option>
+                                        <option value="CASHLESS">Cashless</option>
+                                        <option value="COD">COD</option>
+                                        <option value="DFOD">DFOD</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control custom-input" id="resi"
+                                            placeholder="No Resi" required>
+                                        <label for="resi">Nomer Resi</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <select id="expedisi" class="form-select custom-select">
+                                        <option value="PILIH EXPEDISI">EXPEDISI</option>
+                                        <option value="JNE REG">JNE REG</option>
+                                        <option value="JNE OKE">JNE OKE</option>
+                                        <option value="JNE YES">JNE YES</option>
+                                        <option value="JNE JTR">JNE JTR</option>
+                                        <option value="JNT">JNT</option>
+                                        <option value="JNT DFOD">JNT DFOD</option>
+                                        <option value="JNT ECO">JNT ECONOMY</option>
+                                        <option value="JNT JMR">JNT JEMARI</option>
+                                        <option value="LAZDA EXP">LEL EXPRESS</option>
+                                        <option value="TIKI">TIKI</option>
+                                        <option value="ID EXP">ID EXPRESS</option>
+                                        <option value="ANTER AJA">ANTER AJA</option>
+                                        <option value="NINJA">NINJA EXPRESS</option>
+                                        <option value="WAHANA">WAHANA</option>
+                                        <option value="SICEPAT REG">SICEPAT REG</option>
+                                        <option value="SICEPAT HALU">SICEPAT HALU</option>
+                                        <option value="SPX REG">SHOPEE EXPRESS STD</option>
+                                        <option value="SPX ECO">SHOPEE EXPRESS ECO</option>
+                                        <option value="SPX INSTANT">SHOPEE EXPRESS INS</option>
+                                        <option value="GRAB INST">GRAB INSTANT</option>
+                                        <option value="GRAB SAME">GRAB SAMEDAY</option>
+                                        <option value="GOJEK INST">GOJEK INSTANT</option>
+                                        <option value="GOJEK SAME">GOJEK SAMEDAY</option>
+                                        <option value="CARGO">CARGO</option>
+                                        <!-- Add other courier options -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="nopes" placeholder="No Pesanan">
+                                    <label for="nopes">No Pesanan</label>
+                                </div>
+                            </div>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="pengirim"
+                                            placeholder="Nama Pengiriman & No Tlp" required>
+                                        <label for="pengirim">Nama Pengiriman & No Tlp</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="penerima"
+                                            placeholder="Nama Penerima & No Tlp" required>
+                                        <label for="penerima">Nama Penerima & No Tlp</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-floating">
+                                    <textarea class="form-control custom-textarea" id="alamat"
+                                        placeholder="Alamat Penerima" required></textarea>
+                                    <label for="alamat">Alamat Penerima</label>
+                                </div>
+                            </div>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control custom-product-input" id="barang"
+                                            placeholder="Product 1">
+                                        <label for="barang">Product 1</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control custom-product-input" id="barangdua"
+                                            placeholder="Product 2">
+                                        <label for="barangdua">Product 2</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control custom-product-input" id="barangtiga"
+                                            placeholder="Product 3">
+                                        <label for="barangtiga">Product 3</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="button-container">
+                                <button type="button" class="btn btn-primary custom-btn" onclick="printPDF()">
+                                    <i class="fas fa-print me-2"></i>Print
+                                </button>
+                                <button type="button" class="btn btn-success custom-btn" onclick="createPDF()">
+                                    <i class="fas fa-download me-2"></i>Download
+                                </button>
+                                <button type="reset" class="btn btn-secondary custom-btn">
+                                    <i class="fas fa-redo me-2"></i>Reset
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- <footer class="py-3">
-        <div class="container text-center">
-          <p>&copy; 2023 IZZABAGS</p>
-        </div>
-    </footer> -->
+    <img id="barcode" style="display:none;">
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(function () {
+                    console.log('Service Worker Registered');
+                });
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="generate.js"></script>
 </body>
-<script src="../js/script.js" defer type="text/javascript"></script>
-<script src="../js/switch.js" defer type="text/javascript"></script>
+
 </html>

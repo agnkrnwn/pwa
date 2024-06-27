@@ -1,0 +1,141 @@
+:root {
+    --primary-color: #6a1b9a;
+    --secondary-color: #4a148c;
+    --text-color: #e0e0e0;
+    --background-color: #121212;
+    --card-background: #1e1e1e;
+    --input-background: #2c2c2c;
+    --input-border: #3f3f3f;
+    --input-focus: #7c4dff;
+}
+
+body.dark-theme {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-card {
+    background-color: var(--card-background);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.form-control,
+.form-select {
+    background-color: var(--input-background);
+    border-color: var(--input-border);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: var(--input-background);
+    border-color: var(--input-focus);
+    box-shadow: 0 0 0 0.2rem rgba(124, 77, 255, 0.25);
+    color: var(--text-color);
+}
+
+.form-floating label {
+    color: #9e9e9e;
+}
+
+.custom-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23e0e0e0' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 12px 12px;
+    padding-right: 2.5rem;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    /* Memusatkan tombol-tombol secara horizontal */
+    gap: 10px;
+    /* Jarak antar tombol */
+    margin-top: 20px;
+    /* Memberikan sedikit ruang di atas tombol-tombol */
+}
+
+.custom-btn {
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    flex: 0 1 auto;
+    /* Memungkinkan tombol untuk menyusut jika diperlukan */
+    min-width: 120px;
+    /* Menetapkan lebar minimum untuk konsistensi */
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+}
+
+.btn-success {
+    background-color: #00c853;
+}
+
+.btn-success:hover {
+    background-color: #00a041;
+}
+
+.btn-secondary {
+    background-color: #424242;
+}
+
+.btn-secondary:hover {
+    background-color: #616161;
+}
+
+.custom-input,
+.custom-select {
+    height: 58px;
+}
+
+.custom-textarea {
+    height: 150px !important;
+}
+
+.custom-product-input {
+    height: 50px;
+}
+
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 1rem;
+    }
+
+    .main-card {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .custom-btn {
+        width: 80%;
+        /* Membuat tombol lebih lebar pada layar kecil */
+        margin-bottom: 10px;
+        /* Memberikan jarak vertikal antar tombol */
+    }
+}
