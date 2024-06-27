@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('/webfonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+  }
+
 :root {
     --primary-color: #6a1b9a;
     --secondary-color: #4a148c;
@@ -12,7 +19,7 @@
 body.dark-theme {
     background-color: var(--background-color);
     color: var(--text-color);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .main-card {
@@ -25,6 +32,12 @@ body.dark-theme {
 h1 {
     color: var(--primary-color);
     font-weight: 600;
+}
+
+p, a {
+    color: var(--text-color);
+    font-weight: 300;
+    text-decoration: none;
 }
 
 .form-control,
@@ -59,11 +72,8 @@ h1 {
 .button-container {
     display: flex;
     justify-content: center;
-    /* Memusatkan tombol-tombol secara horizontal */
     gap: 10px;
-    /* Jarak antar tombol */
     margin-top: 20px;
-    /* Memberikan sedikit ruang di atas tombol-tombol */
 }
 
 .custom-btn {
@@ -75,9 +85,7 @@ h1 {
     transition: all 0.3s ease;
     padding: 0.5rem 1rem;
     flex: 0 1 auto;
-    /* Memungkinkan tombol untuk menyusut jika diperlukan */
     min-width: 120px;
-    /* Menetapkan lebar minimum untuk konsistensi */
 }
 
 .btn-primary {
@@ -110,7 +118,7 @@ h1 {
 }
 
 .custom-textarea {
-    height: 150px !important;
+    height: 160px !important;
 }
 
 .custom-product-input {
@@ -134,8 +142,6 @@ h1 {
 
     .custom-btn {
         width: 80%;
-        /* Membuat tombol lebih lebar pada layar kecil */
         margin-bottom: 10px;
-        /* Memberikan jarak vertikal antar tombol */
     }
 }
